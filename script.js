@@ -1,11 +1,15 @@
 const digitBar = document.getElementById("display");
-const numberButtons = document.querySelectorAll(".numberButton")
+const numberButtons = document.querySelectorAll(".numberButton");
+const operatorButtons = document.querySelectorAll(".operationButton");
 
 let currentNumberShown = "0";
 digitBar.innerText = currentNumberShown;
 
-let value1 = 0;
-let value2 = 0;
+let value1 = 0.0;
+let value2 = 0.0;
+let decimalUsed = false;
+
+let currentOperation = "+";
 
 for (let x in numberButtons){
     if (numberButtons[x].nodeName == "BUTTON"){
@@ -21,22 +25,47 @@ for (let x in numberButtons){
     }
 }
 
-document.getElementById("plusButton").addEventListener("click", function(){
-    value1 = parseInt(currentNumberShown);
-    currentNumberShown = "0";
-    digitBar.innerText = currentNumberShown;
-    value2 = 0;
-});
-//chagne this function to include all operator buttons, but get operation and put in function.
+for (let x in operatorButtons) {
+    if (operatorButtons[x].nodeName == "BUTTON"){
+        operatorButtons[x].addEventListener("click", function(){
+            currentOperation = operatorButtons[x].innerText;
+            value1 = parseFloat(currentNumberShown);
+            currentNumberShown = "0";
+            //digitBar.innerText = currentNumberShown;
+            value2 = 0;
+        });
+    }
+}
 
 document.getElementById("equalsButton").addEventListener("click", function(){
-    value2 = parseInt(currentNumberShown);
-    currentNumberShown = (value1 + value2).toString();
-    value1 = parseInt(currentNumberShown);
+    operation(currentOperation);
+});
+
+function operation(operationToUse){
+    value2 = parseFloat(currentNumberShown);
+
+    switch (operationToUse){
+        case "+":
+            currentNumberShown = parseFloat(value1 + value2);
+            break;
+        case "-":
+            currentNumberShown = parseFloat(value1 - value2);
+            break;
+        case "*":
+            currentNumberShown = parseFloat(value1 * value2);
+            break;
+        case "/":
+            currentNumberShown = parseFloat(value1 / value2);
+            break;
+        case "%":
+            currentNumberShown = parseFloat(value1 % value2);
+            break;
+    }
+
+    value1 = parseFloat(currentNumberShown);
     value2 = 0;
     digitBar.innerText = currentNumberShown;
-    console.log(value1 + " " + value2 + " " + currentNumberShown);
-});
+}
 
 document.getElementById("clearButton").addEventListener("click", function(){
     value1 = 0;
