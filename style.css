@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    margin: 0;
+    display: flex;
+    background-color: rgb(243, 243, 243);
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#digitBar {
+    align-self: stretch;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 2px solid darkgray;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    width: 320px;
+}
+
+span {
+    font-family: Libre Baskerville;
+    font-size: 32pt;
+    width: 320px;
+    overflow: hidden;
+    text-align: right;
+}
+
+button {
+    height: 60px;
+    width: 60px;
+    font-family: Roboto;
+    font-size: 20pt;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: rgb(179, 179, 179);
+}
+
+button:active {
+    background-color: rgb(131, 131, 131);
+}
+
+.darkButton {
+    background-color: rgb(195, 107, 0);
+    color: white;
+}
+
+.darkButton:hover {
+    background-color: rgb(255, 187, 104);
+}
+
+.darkButton:active {
+    background-color: rgb(255, 203, 139);
+}
