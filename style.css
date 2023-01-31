@@ -64,3 +64,9 @@ button:active {
 .darkButton:active {
     background-color: rgb(255, 203, 139);
 }
+
+#footer {
+    justify-self: flex-end;
+    font-family: Libre Baskerville;
+    text-align: center;
+}
